@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcAutoParts - Premium Electric AC Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-animation">
+            <div class="loading-logo">
+                <img src="public/logo.png" alt="AcAutoParts Logo" class="logo-image">
+                <span>AcAutoParts</span>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="public/logo.png" alt="AcAutoParts Logo" class="logo-image">
+            <span>AcAutoParts</span>
+        </div>
+        <div class="nav-menu">
+            <a href="https://acautoparts.in" target="_blank" class="catalog-link">
+                <i class="fas fa-book-open"></i>
+                <i class="fas fa-external-link-alt"></i>
+                <span>Full Catalog</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Progress Indicator -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+        <div class="progress-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+            <span class="dot" data-slide="3"></span>
+            <span class="dot" data-slide="4"></span>
+            <span class="dot" data-slide="5"></span>
+            <span class="dot" data-slide="6"></span>
+            <span class="dot" data-slide="7"></span>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Product Slides -->
+        <div class="product-slider" id="productSlider">
+
+            <!-- Slide 1: Hero - Urbania Lounger -->
+            <div class="slide active" data-slide="0">
+                <div class="media-container">
+                    <video class="product-video" autoplay muted loop playsinline>
+                        <source src="public/videos/electric_ac_installed/urbania_lounger.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <button class="mute-toggle" aria-label="Toggle sound">
+                            <i class="fas fa-volume-mute"></i>
+                        </button>
+                    </div>
+                    <div class="gradient-overlay"></div>
+                </div>
+
+                <div class="content-overlay">
+                    <div class="slide-header">
+                        <div class="trust-badges">
+                            <span class="badge verified">
+                                <i class="fas fa-shield-check"></i>
+                                Verified Install
+                            </span>
+                            <span class="badge quality">
+                                <i class="fas fa-star"></i>
+                                Premium Quality
+                            </span>
+                        </div>
+                        <button class="info-btn-small" id="infoBtn" title="Product Details">
+                            <i class="fas fa-info"></i>
+                        </button>
+                    </div>
+
+                    <div class="product-info">
+                        <h1 class="product-title">Electric Split AC for Commercial Vehicles</h1>
+                        <p class="product-subtitle">Perfect for Caravans, Trucks, RVs, JCBs & Earthmoving Equipment</p>
+
+                        <div class="value-props">
+                            <div class="prop">
+                                <i class="fas fa-truck"></i>
+                                <span>Heavy Duty</span>
+                            </div>
+                            <div class="prop">
+                                <i class="fas fa-thermometer-half"></i>
+                                <span>All Weather</span>
+                            </div>
+                            <div class="prop">
+                                <i class="fas fa-tools"></i>
+                                <span>Easy Install</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Installation Process -->
+            <div class="slide" data-slide="1">
+                <div class="media-container">
+                    <video class="product-video" muted loop playsinline preload="none" data-src="public/videos/electric_ac_installed/VIDEO-2025-07-24-12-34-52.mp4">
+                        <source data-src="public/videos/electric_ac_installed/VIDEO-2025-07-24-12-34-52.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <button class="mute-toggle" aria-label="Toggle sound">
+                            <i class="fas fa-volume-mute"></i>
+                        </button>
+                    </div>
+                    <div class="gradient-overlay"></div>
+                </div>
+
+                <div class="content-overlay">
+                    <div class="slide-header">
+                        <div class="trust-badges">
+                            <span class="badge installation">
+                                <i class="fas fa-tools"></i>
+                                Professional Install
+                            </span>
+                            <span class="badge delivery">
+                                <i class="fas fa-clock"></i>
+                                Same Day Service
+                            </span>
+                        </div>
+                        <button class="info-btn-small" title="Product Details">
+                            <i class="fas fa-info"></i>
+                        </button>
+                    </div>
+
+                                        <div class="product-info">
+                        <h2 class="product-title">Professional Vehicle Installation</h2>
+                        <p class="product-subtitle">Expert fitting for all commercial vehicles</p>
+
+                        <div class="installation-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <span>Vehicle Assessment</span>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <span>Custom Mounting</span>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <span>Power Integration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Product Video Showcase -->
+            <div class="slide" data-slide="2">
+                <div class="media-container">
+                    <video class="product-video" muted loop playsinline preload="none" data-src="public/videos/electric_ac_installed/VIDEO-2025-06-09-09-48-56.mp4">
+                        <source data-src="public/videos/electric_ac_installed/VIDEO-2025-06-09-09-48-56.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <button class="mute-toggle" aria-label="Toggle sound">
+                            <i class="fas fa-volume-mute"></i>
+                        </button>
+                    </div>
+                    <div class="gradient-overlay"></div>
+                </div>
+
+                <div class="content-overlay">
+                    <div class="slide-header">
+                        <div class="trust-badges">
+                            <span class="badge price-drop">
+                                <i class="fas fa-arrow-down"></i>
+                                Price Drop Alert
+                            </span>
+                            <span class="badge warranty">
+                                <i class="fas fa-shield-alt"></i>
+                                2 Months Warranty (All service parts available)
+                            </span>
+                        </div>
+                        <button class="info-btn-small" title="Product Details">
+                            <i class="fas fa-info"></i>
+                        </button>
+                    </div>
+
+                    <div class="product-info">
+                        <h2 class="product-title">Performance in Action</h2>
+                        <p class="product-subtitle">See our AC units delivering reliable cooling</p>
+
+                        <div class="specs-preview">
+                            <div class="spec">
+                                <span class="spec-label">Vehicle Type</span>
+                                <span class="spec-value">All Commercial</span>
+                            </div>
+                            <div class="spec">
+                                <span class="spec-label">Power Source</span>
+                                <span class="spec-value">12V/24V DC</span>
+                            </div>
+                            <div class="spec">
+                                <span class="spec-label">Durability</span>
+                                <span class="spec-value">Heavy Duty</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Customer Reviews -->
+            <div class="slide" data-slide="3">
+                <div class="media-container">
+                    <video class="product-video" muted loop playsinline>
+                        <source src="public/videos/electric_ac_installed/VIDEO-2025-07-09-10-00-54.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <button class="mute-toggle" aria-label="Toggle sound">
+                            <i class="fas fa-volume-mute"></i>
+                        </button>
+                    </div>
+                    <div class="gradient-overlay"></div>
+                </div>
+
+                <div class="content-overlay">
+                    <div class="slide-header">
+                        <div class="trust-badges">
+                            <span class="badge reviews">
+                                <i class="fas fa-star"></i>
+                                4.8/5 Rating
+                            </span>
+                            <span class="badge customers">
+                                <i class="fas fa-users"></i>
+                                500+ Happy Customers
+                            </span>
+                        </div>
+                        <button class="info-btn-small" title="Product Details">
+                            <i class="fas fa-info"></i>
+                        </button>
+                    </div>
+
+                    <div class="product-info">
+                        <h2 class="product-title">Customer Satisfaction</h2>
+                        <p class="product-subtitle">Real installations from satisfied customers</p>
+
+                        <div class="testimonial">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Perfect for our fleet of trucks. Keeps drivers comfortable even in extreme heat. Professional installation!"</p>
+                            <span class="customer-name">- Transport Company Owner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Different Vehicle Types -->
+            <div class="slide" data-slide="4">
+                <div class="media-container">
+                    <video class="product-video" muted loop playsinline preload="none" data-src="public/videos/electric_ac_installed/VIDEO-2025-03-28-12-36-59.mp4">
+                        <source data-src="public/videos/electric_ac_installed/VIDEO-2025-03-28-12-36-59.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <button class="mute-toggle" aria-label="Toggle sound">
+                            <i class="fas fa-volume-mute"></i>
+                        </button>
+                    </div>
+                    <div class="gradient-overlay"></div>
+                </div>
+
+                <div class="content-overlay">
+                    <div class="slide-header">
+                        <div class="trust-badges">
+                            <span class="badge verified">
+                                <i class="fas fa-truck"></i>
+                                Heavy Vehicles
+                            </span>
+                            <span class="badge quality">
+                                <i class="fas fa-cogs"></i>
+                                Custom Solutions
+                            </span>
+                        </div>
+                        <button class="info-btn-small" title="Product Details">
+                            <i class="fas fa-info"></i>
+                        </button>
+                    </div>
+
+                    <div class="product-info">
+                        <h2 class="product-title">Multi-Vehicle Compatibility</h2>
+                        <p class="product-subtitle">Versatile solutions for all commercial vehicle types</p>
+
+                        <div class="vehicle-types">
+                            <div class="vehicle-type">
+                                <i class="fas fa-truck"></i>
+                                <span>Heavy Trucks</span>
+                            </div>
+                            <div class="vehicle-type">
+                                <i class="fas fa-caravan"></i>
+                                <span>Caravans</span>
+                            </div>
+                            <div class="vehicle-type">
+                                <i class="fas fa-tractor"></i>
+                                <span>Construction</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Compact Installation -->
+            <div class="slide" data-slide="5">
+                <div class="media-container">
+                    <video class="product-video" muted loop playsinline preload="none" data-src="public/videos/electric_ac_installed/VIDEO-2025-05-29-10-44-18.mp4">
+                        <source data-src="public/videos/electric_ac_installed/VIDEO-2025-05-29-10-44-18.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <button class="mute-toggle" aria-label="Toggle sound">
+                            <i class="fas fa-volume-mute"></i>
+                        </button>
+                    </div>
+                    <div class="gradient-overlay"></div>
+                </div>
+
+                <div class="content-overlay">
+                    <div class="slide-header">
+                        <div class="trust-badges">
+                            <span class="badge installation">
+                                <i class="fas fa-compact-disc"></i>
+                                Compact Design
+                            </span>
+                            <span class="badge delivery">
+                                <i class="fas fa-bolt"></i>
+                                Quick Setup
+                            </span>
+                        </div>
+                        <button class="info-btn-small" title="Product Details">
+                            <i class="fas fa-info"></i>
+                        </button>
+                    </div>
+
+                    <div class="product-info">
+                        <h2 class="product-title">Space-Efficient Design</h2>
+                        <p class="product-subtitle">Maximum cooling in minimal space</p>
+
+                        <div class="features-grid">
+                            <div class="feature">
+                                <i class="fas fa-compress-arrows-alt"></i>
+                                <span>Compact Unit</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-leaf"></i>
+                                <span>Eco-Friendly</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-volume-off"></i>
+                                <span>Silent Operation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Multiple Installation Videos -->
+            <div class="slide" data-slide="6">
+                <div class="media-container">
+                    <div class="video-carousel" id="videoCarousel">
+                        <video class="carousel-video active" muted loop playsinline preload="none" data-src="public/videos/electric_ac_installed/VIDEO-2025-07-01-14-12-37.mp4">
+                            <source data-src="public/videos/electric_ac_installed/VIDEO-2025-07-01-14-12-37.mp4" type="video/mp4">
+                        </video>
+                        <video class="carousel-video" muted loop playsinline preload="none" data-src="public/videos/electric_ac_installed/7b814567-5dda-43dd-9064-bffd2addebcf.MP4">
+                            <source data-src="public/videos/electric_ac_installed/7b814567-5dda-43dd-9064-bffd2addebcf.MP4" type="video/mp4">
+                        </video>
+                        <video class="carousel-video" muted loop playsinline preload="none" data-src="public/videos/electric_ac_installed/d0138c0809244f9c85070a7669c4e478.MOV">
+                            <source data-src="public/videos/electric_ac_installed/d0138c0809244f9c85070a7669c4e478.MOV" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-controls">
+                        <button class="mute-toggle" aria-label="Toggle sound">
+                            <i class="fas fa-volume-mute"></i>
+                        </button>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-prev" id="carouselPrev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="carousel-dots" id="carouselDots">
+                            <span class="carousel-dot active" data-video="0"></span>
+                            <span class="carousel-dot" data-video="1"></span>
+                            <span class="carousel-dot" data-video="2"></span>
+                        </div>
+                        <button class="carousel-next" id="carouselNext">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="gradient-overlay"></div>
+                </div>
+
+                <div class="content-overlay">
+                    <div class="slide-header">
+                        <div class="trust-badges">
+                            <span class="badge verified">
+                                <i class="fas fa-user-graduate"></i>
+                                Expert Install
+                            </span>
+                            <span class="badge quality">
+                                <i class="fas fa-certificate"></i>
+                                Certified Tech
+                            </span>
+                        </div>
+                        <button class="info-btn-small" title="Product Details">
+                            <i class="fas fa-info"></i>
+                        </button>
+                    </div>
+
+                    <div class="product-info">
+                        <h2 class="product-title">Multiple Installation Examples</h2>
+                        <p class="product-subtitle">See different vehicles and installation approaches</p>
+
+                        <div class="tech-specs">
+                            <div class="tech-item">
+                                <span class="tech-label">Voltage</span>
+                                <span class="tech-value">12V/24V DC</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-label">Installation Time</span>
+                                <span class="tech-value">2-4 Hours</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-label">Certification</span>
+                                <span class="tech-value">ISO Standard</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Call to Action -->
+            <div class="slide" data-slide="7">
+                <div class="media-container">
+                    <video class="product-video" muted loop playsinline>
+                        <source src="public/videos/electric_ac_installed/VIDEO-2025-06-09-09-48-56.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <button class="mute-toggle" aria-label="Toggle sound">
+                            <i class="fas fa-volume-mute"></i>
+                        </button>
+                    </div>
+                    <div class="gradient-overlay cta-overlay"></div>
+                </div>
+
+                <div class="content-overlay cta-content">
+                    <div class="cta-section">
+                        <h2 class="cta-title">Cool Your Commercial Vehicle?</h2>
+                        <p class="cta-subtitle">Expert installation for trucks, RVs & heavy equipment</p>
+
+                        <div class="contact-info">
+                            <div class="phone-highlight">
+                                <i class="fas fa-phone"></i>
+                                <span>9814723517</span>
+                            </div>
+                            <p>Call now for more information</p>
+                        </div>
+
+                        <div class="cta-buttons">
+                            <a href="tel:9814723517" class="btn-primary">
+                                <i class="fas fa-phone"></i>
+                                Call Now
+                            </a>
+                            <a href="https://wa.me/916239444069" class="btn-secondary">
+                                <i class="fab fa-whatsapp"></i>
+                                WhatsApp
+                            </a>
+                        </div>
+
+                        <div class="urgency-indicator">
+                            <i class="fas fa-clock"></i>
+                            <span>Limited time offer - Call today!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="navigation-controls">
+            <button class="nav-btn prev-btn" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="nav-btn next-btn" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Video Showcase Toggle -->
+        <div class="video-showcase-container" id="videoShowcaseContainer">
+            <button class="video-showcase-btn" id="videoShowcaseBtn">
+                <i class="fas fa-video"></i>
+                <span>Watch More Installation Videos</span>
+                <i class="fas fa-chevron-up"></i>
+            </button>
+        </div>
+
+
+
+        <!-- Background Music -->
+        <audio id="backgroundMusic" preload="auto" muted loop="false">
+            <source src="public/music/Lymez - Coconut Soap.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- Music Control Button -->
+        <div class="music-control-container">
+            <button class="music-control-btn" id="musicControlBtn" title="Toggle Music">
+                <i class="fas fa-music"></i>
+            </button>
+        </div>
+
+        <!-- Floating Action Button -->
+        <div class="fab-container">
+            <button class="fab" id="contactFab">
+                <i class="fas fa-phone"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Deep Dive Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Product Details</h3>
+                <button class="close-btn" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="specs">Specifications</button>
+                    <button class="tab-btn" data-tab="installation">Installation</button>
+                    <button class="tab-btn" data-tab="reviews">Reviews</button>
+                </div>
+
+                <div class="tab-content active" id="specs">
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="label">Cooling Capacity</span>
+                            <span class="value">1.5 Ton (18,000 BTU/hr)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="label">Energy Rating</span>
+                            <span class="value">5 Star BEE Certified</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="label">Compressor Type</span>
+                            <span class="value">Rotary Compressor</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="label">Refrigerant</span>
+                            <span class="value">R410A Eco-friendly</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="label">Room Size</span>
+                            <span class="value">150-180 sq ft</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="label">Warranty</span>
+                            <span class="value">2 Years Comprehensive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="installation">
+                    <div class="installation-guide">
+                        <div class="install-step">
+                            <div class="step-icon">1</div>
+                            <div class="step-content">
+                                <h4>Site Survey</h4>
+                                <p>Our expert team visits your location to assess the installation requirements</p>
+                            </div>
+                        </div>
+                        <div class="install-step">
+                            <div class="step-icon">2</div>
+                            <div class="step-content">
+                                <h4>Professional Installation</h4>
+                                <p>Certified technicians ensure proper mounting and electrical connections</p>
+                            </div>
+                        </div>
+                        <div class="install-step">
+                            <div class="step-icon">3</div>
+                            <div class="step-content">
+                                <h4>Testing & Commissioning</h4>
+                                <p>Complete system testing to ensure optimal performance</p>
+                            </div>
+                        </div>
+                        <div class="install-step">
+                            <div class="step-icon">4</div>
+                            <div class="step-content">
+                                <h4>Handover & Training</h4>
+                                <p>Demo and user training for optimal usage and maintenance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="reviews">
+                    <div class="reviews-list">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="review-date">2 weeks ago</span>
+                            </div>
+                            <p>"Excellent product quality and professional installation. Highly recommended!"</p>
+                            <span class="reviewer">Verified Customer</span>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="review-date">1 month ago</span>
+                            </div>
+                            <p>"Great service and competitive pricing. The AC works perfectly."</p>
+                            <span class="reviewer">Verified Customer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-cta">
+                    <p>Ready to install your Electric AC?</p>
+                    <div class="cta-buttons-modal">
+                        <a href="tel:9814723517" class="btn-primary">
+                            <i class="fas fa-phone"></i>
+                            Call 9814723517
+                        </a>
+                        <a href="https://acautoparts.in" target="_blank" class="btn-secondary">
+                            <i class="fas fa-book-open"></i>
+                            <i class="fas fa-external-link-alt"></i>
+                            View Full Catalog
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Showcase Modal -->
+    <div class="video-showcase-modal" id="videoShowcaseModal">
+        <div class="video-showcase-content">
+            <div class="video-showcase-header">
+                <h3>Installation Gallery</h3>
+                <button class="close-showcase-btn" id="closeShowcaseBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="video-showcase-slider">
+                <div class="showcase-video-container">
+                    <video class="showcase-video" controls preload="none" id="showcaseVideo">
+                        <source src="" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="video-showcase-controls">
+                    <button class="showcase-prev-btn" id="showcasePrevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="video-showcase-info">
+                        <span class="video-title" id="videoTitle">Installation Process</span>
+                        <span class="video-counter" id="videoCounter">1 / 3</span>
+                    </div>
+                    <button class="showcase-next-btn" id="showcaseNextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="video-showcase-thumbnails">
+                <div class="thumbnail active" data-video="public/videos/electric_ac_installed/7b814567-5dda-43dd-9064-bffd2addebcf.MP4" data-title="Professional Installation">
+                    <div class="thumbnail-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="thumbnail" data-video="public/videos/electric_ac_installed/d0138c0809244f9c85070a7669c4e478.MOV" data-title="Vehicle Integration">
+                    <div class="thumbnail-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="thumbnail" data-video="public/videos/electric_ac_installed/VIDEO-2025-05-29-10-44-18.mp4" data-title="Compact Solutions">
+                    <div class="thumbnail-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
