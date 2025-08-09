@@ -175,7 +175,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: var(--space-4) var(--space-6);
-    background: rgba(26, 26, 26, 0.95);
+    background: transparent;
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 1000;
@@ -523,23 +523,39 @@ body {
 
 /* Move content up for slide 6 (second-to-last slide) so users don't need next button */
 .slide[data-slide="6"] .content-overlay {
-    bottom: 15vh; /* Move content up significantly */
-    padding: var(--space-6) var(--space-6) var(--space-8);
+    bottom: 18vh; /* Move content up significantly */
+    padding: var(--space-4) var(--space-6) var(--space-6);
 }
 
 /* Ensure content doesn't overlap with carousel controls on slide 6 */
 .slide[data-slide="6"] .product-info {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-2);
+}
+
+.slide[data-slide="6"] .product-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-2);
+}
+
+.slide[data-slide="6"] .product-subtitle {
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-base);
 }
 
 /* Reduce spacing in tech specs for slide 6 to fit better */
 .slide[data-slide="6"] .tech-specs {
-    gap: var(--space-2);
-    margin-top: var(--space-4);
+    gap: var(--space-1);
+    margin-top: var(--space-2);
 }
 
 .slide[data-slide="6"] .tech-item {
-    padding: var(--space-2) var(--space-3);
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--font-size-sm);
+}
+
+.slide[data-slide="6"] .tech-label,
+.slide[data-slide="6"] .tech-value {
+    font-size: var(--font-size-xs);
 }
 
 .cta-content {
@@ -774,16 +790,32 @@ body {
 .specs-preview {
     display: flex;
     flex-direction: column;
-    gap: var(--space-3);
-    margin-top: var(--space-6);
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+}
+
+/* Compact layout for Performance in Action slide (slide 2) */
+.slide[data-slide="2"] .content-overlay {
+    padding: var(--space-6) var(--space-6) var(--space-8);
+}
+
+.slide[data-slide="2"] .product-info {
+    margin-bottom: var(--space-2);
+}
+
+.slide[data-slide="2"] .specs-preview {
+    margin-top: var(--space-3);
+    gap: var(--space-1);
 }
 
 .spec {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-3) 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--space-2) var(--space-3);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .spec-label {
@@ -798,11 +830,31 @@ body {
 
 /* Testimonial */
 .testimonial {
-    margin-top: var(--space-6);
-    padding: var(--space-4);
+    margin-top: var(--space-4);
+    padding: var(--space-3);
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Compact layout for Customer Satisfaction slide (slide 3) */
+.slide[data-slide="3"] .content-overlay {
+    padding: var(--space-6) var(--space-6) var(--space-8);
+}
+
+.slide[data-slide="3"] .product-info {
+    margin-bottom: var(--space-2);
+}
+
+.slide[data-slide="3"] .testimonial {
+    margin-top: var(--space-3);
+    padding: var(--space-3);
+}
+
+.slide[data-slide="3"] .testimonial p {
+    margin-bottom: var(--space-2);
+    font-size: var(--font-size-sm);
+    line-height: 1.4;
 }
 
 .stars {
@@ -935,6 +987,22 @@ body {
     border-color: var(--accent-teal);
 }
 
+/* WhatsApp Button Specific Styling */
+.whatsapp-btn {
+    background: rgba(37, 211, 102, 0.1) !important;
+    border-color: rgba(37, 211, 102, 0.3) !important;
+}
+
+.whatsapp-btn:hover {
+    background: rgba(37, 211, 102, 0.2) !important;
+    border-color: #25d366 !important;
+}
+
+.whatsapp-btn .fab.fa-whatsapp {
+    color: #25d366 !important;
+    font-size: 18px;
+}
+
 .urgency-indicator {
     display: flex;
     align-items: center;
@@ -956,7 +1024,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 var(--space-6);
+    padding: 0;
     z-index: 100;
     pointer-events: none;
 }
@@ -1095,7 +1163,7 @@ body {
 .slide-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: var(--space-3);
 }
 
@@ -1471,7 +1539,7 @@ body {
     }
 
     .navigation-controls {
-        padding: 0 var(--space-4);
+        padding: 0;
     }
 
     .nav-btn {
@@ -1481,12 +1549,14 @@ body {
     }
 
     .slide-header {
-        flex-direction: column;
-        gap: var(--space-3);
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--space-2);
     }
 
     .info-btn-small {
-        align-self: flex-end;
+        flex-shrink: 0;
     }
 
     .video-showcase-container {
@@ -1506,7 +1576,7 @@ body {
 
     /* Adjust slide 6 content positioning for mobile */
     .slide[data-slide="6"] .content-overlay {
-        bottom: 12vh; /* Less spacing on mobile */
+        bottom: 7vh; /* Less spacing on mobile */
         padding: var(--space-4) var(--space-4) var(--space-6);
     }
 
@@ -1518,6 +1588,26 @@ body {
     .slide[data-slide="6"] .tech-item {
         padding: var(--space-1) var(--space-2);
         font-size: var(--font-size-sm);
+    }
+
+    /* Mobile optimizations for Performance in Action slide */
+    .slide[data-slide="2"] .content-overlay {
+        padding: var(--space-4) var(--space-4) var(--space-6);
+    }
+
+    .slide[data-slide="2"] .specs-preview {
+        gap: var(--space-1);
+        margin-top: var(--space-2);
+    }
+
+    /* Mobile optimizations for Customer Satisfaction slide */
+    .slide[data-slide="3"] .content-overlay {
+        padding: var(--space-4) var(--space-4) var(--space-6);
+    }
+
+    .slide[data-slide="3"] .testimonial {
+        margin-top: var(--space-2);
+        padding: var(--space-2);
     }
 
     .carousel-prev,
@@ -1596,7 +1686,7 @@ body {
     }
 
     .navigation-controls {
-        padding: 0 var(--space-3);
+        padding: 0;
     }
 
     .nav-btn {
