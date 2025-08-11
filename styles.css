@@ -1926,3 +1926,323 @@ body {
 .thumbnail:hover .thumbnail-overlay {
     opacity: 0.8;
 }
+
+/* TikTok-Style Floating Comment Bubbles */
+.testimonial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.comment-bubble {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 20px;
+    padding: 12px 16px;
+    max-width: 280px;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    animation: commentFloat 6s ease-out forwards;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+}
+
+.comment-bubble:hover {
+    transform: scale(1.05);
+    border-color: rgba(0, 212, 255, 0.6);
+    box-shadow: 0 8px 30px rgba(0, 212, 255, 0.2);
+}
+
+.comment-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid rgba(0, 0, 0, 0.85);
+}
+
+.comment-bubble::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.comment-bubble:hover::after {
+    opacity: 1;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.comment-author {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-blue);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.verified-badge {
+    background: var(--accent-teal);
+    color: var(--bg-primary);
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.comment-location {
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.comment-text {
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 6px;
+    word-wrap: break-word;
+}
+
+.comment-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 10px;
+}
+
+.comment-vehicle {
+    color: var(--accent-gold);
+    font-weight: 500;
+}
+
+.comment-timestamp {
+    color: var(--text-muted);
+}
+
+.comment-rating {
+    display: flex;
+    gap: 2px;
+}
+
+.comment-rating i {
+    color: var(--accent-gold);
+    font-size: 10px;
+}
+
+@keyframes commentFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.9);
+    }
+}
+
+@keyframes commentFloatLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px) scale(0.8);
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translateX(10px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(30px) scale(0.9);
+    }
+}
+
+@keyframes commentFloatRight {
+    0% {
+        opacity: 0;
+        transform: translateX(20px) scale(0.8);
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translateX(-10px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-30px) scale(0.9);
+    }
+}
+
+/* Comment bubble positions with different animations */
+.comment-bubble:nth-child(1) { left: 10%; animation: commentFloat 6s ease-out forwards; }
+.comment-bubble:nth-child(2) { left: 20%; animation: commentFloatLeft 6s ease-out forwards; }
+.comment-bubble:nth-child(3) { left: 70%; animation: commentFloatRight 6s ease-out forwards; }
+.comment-bubble:nth-child(4) { left: 80%; animation: commentFloat 6s ease-out forwards; }
+.comment-bubble:nth-child(5) { left: 15%; animation: commentFloatLeft 6s ease-out forwards; }
+.comment-bubble:nth-child(6) { left: 75%; animation: commentFloatRight 6s ease-out forwards; }
+.comment-bubble:nth-child(7) { left: 25%; animation: commentFloat 6s ease-out forwards; }
+.comment-bubble:nth-child(8) { left: 65%; animation: commentFloatLeft 6s ease-out forwards; }
+.comment-bubble:nth-child(9) { left: 35%; animation: commentFloatRight 6s ease-out forwards; }
+.comment-bubble:nth-child(10) { left: 55%; animation: commentFloat 6s ease-out forwards; }
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .comment-bubble {
+        max-width: 240px;
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    .comment-bubble:nth-child(1) { left: 5%; animation: commentFloat 6s ease-out forwards; }
+    .comment-bubble:nth-child(2) { left: 15%; animation: commentFloatLeft 6s ease-out forwards; }
+    .comment-bubble:nth-child(3) { left: 75%; animation: commentFloatRight 6s ease-out forwards; }
+    .comment-bubble:nth-child(4) { left: 85%; animation: commentFloat 6s ease-out forwards; }
+    .comment-bubble:nth-child(5) { left: 10%; animation: commentFloatLeft 6s ease-out forwards; }
+    .comment-bubble:nth-child(6) { left: 80%; animation: commentFloatRight 6s ease-out forwards; }
+    .comment-bubble:nth-child(7) { left: 20%; animation: commentFloat 6s ease-out forwards; }
+    .comment-bubble:nth-child(8) { left: 70%; animation: commentFloatLeft 6s ease-out forwards; }
+    .comment-bubble:nth-child(9) { left: 30%; animation: commentFloatRight 6s ease-out forwards; }
+    .comment-bubble:nth-child(10) { left: 60%; animation: commentFloat 6s ease-out forwards; }
+
+    .testimonial-toggle-container {
+        bottom: 100px;
+        right: 15px;
+    }
+
+    .testimonial-toggle-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .comment-bubble {
+        max-width: 200px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .comment-bubble:nth-child(1) { left: 2%; animation: commentFloat 6s ease-out forwards; }
+    .comment-bubble:nth-child(2) { left: 12%; animation: commentFloatLeft 6s ease-out forwards; }
+    .comment-bubble:nth-child(3) { left: 78%; animation: commentFloatRight 6s ease-out forwards; }
+    .comment-bubble:nth-child(4) { left: 88%; animation: commentFloat 6s ease-out forwards; }
+    .comment-bubble:nth-child(5) { left: 8%; animation: commentFloatLeft 6s ease-out forwards; }
+    .comment-bubble:nth-child(6) { left: 82%; animation: commentFloatRight 6s ease-out forwards; }
+    .comment-bubble:nth-child(7) { left: 18%; animation: commentFloat 6s ease-out forwards; }
+    .comment-bubble:nth-child(8) { left: 72%; animation: commentFloatLeft 6s ease-out forwards; }
+    .comment-bubble:nth-child(9) { left: 25%; animation: commentFloatRight 6s ease-out forwards; }
+    .comment-bubble:nth-child(10) { left: 65%; animation: commentFloat 6s ease-out forwards; }
+
+    .testimonial-toggle-container {
+        bottom: 90px;
+        right: 10px;
+    }
+
+    .testimonial-toggle-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+/* Testimonial Toggle Button */
+.testimonial-toggle-container {
+    position: fixed;
+    bottom: 120px;
+    right: 20px;
+    z-index: 1001;
+}
+
+.testimonial-toggle-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gradient-cta);
+    border: none;
+    color: var(--bg-primary);
+    font-size: 18px;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-float);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: buttonEntrance 0.8s ease-out 1s both;
+}
+
+@keyframes buttonEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.testimonial-toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-glow);
+}
+
+.testimonial-toggle-btn.active {
+    background: var(--accent-red);
+    animation: pulse 2s infinite;
+}
+
+.testimonial-toggle-btn.active i {
+    animation: bounce 1s infinite;
+}
+
+/* Hide testimonials when disabled */
+.testimonial-overlay.disabled {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.testimonial-overlay.disabled .comment-bubble {
+    display: none;
+}

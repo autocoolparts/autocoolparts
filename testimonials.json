@@ -1,0 +1,104 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "comment": "🔥 Amazing cooling performance!",
+      "author": "Truck Owner",
+      "location": "Mumbai",
+      "rating": 5,
+      "verified": true,
+      "vehicle": "Heavy Truck",
+      "timestamp": "2s ago"
+    },
+    {
+      "id": 2,
+      "comment": "⚡ Quick professional installation",
+      "author": "Fleet Manager",
+      "location": "Delhi",
+      "rating": 5,
+      "verified": true,
+      "vehicle": "Commercial Fleet",
+      "timestamp": "5s ago"
+    },
+    {
+      "id": 3,
+      "comment": "💯 Best investment for our drivers",
+      "author": "Transport Co.",
+      "location": "Pune",
+      "rating": 5,
+      "verified": true,
+      "vehicle": "Multiple Vehicles",
+      "timestamp": "8s ago"
+    },
+    {
+      "id": 4,
+      "comment": "✅ Works perfectly in extreme heat",
+      "author": "JCB Operator",
+      "location": "Chennai",
+      "rating": 5,
+      "verified": true,
+      "vehicle": "Construction Equipment",
+      "timestamp": "12s ago"
+    },
+    {
+      "id": 5,
+      "comment": "🚛 Silent operation, great quality",
+      "author": "Caravan Owner",
+      "location": "Bangalore",
+      "rating": 5,
+      "verified": true,
+      "vehicle": "Caravan",
+      "timestamp": "15s ago"
+    },
+    {
+      "id": 6,
+      "comment": "💪 Heavy duty build quality",
+      "author": "Mining Co.",
+      "location": "Kolkata",
+      "rating": 5,
+      "verified": true,
+      "vehicle": "Mining Equipment",
+      "timestamp": "18s ago"
+    },
+    {
+      "id": 7,
+      "comment": "🌟 Excellent customer service",
+      "author": "Individual Owner",
+      "location": "Hyderabad",
+      "rating": 5,
+      "verified": true,
+      "vehicle": "Personal Truck",
+      "timestamp": "22s ago"
+    },
+    {
+      "id": 8,
+      "comment": "⚡ Same day installation",
+      "author": "Logistics Co.",
+      "location": "Ahmedabad",
+      "rating": 5,
+      "verified": true,
+      "vehicle": "Delivery Trucks",
+      "timestamp": "25s ago"
+    },
+    {
+      "id": 9,
+      "comment": "🔥 Keeps drivers comfortable",
+      "author": "Transport Owner",
+      "location": "Jaipur",
+      "rating": 5,
+      "verified": true,
+      "vehicle": "Long Haul Trucks",
+      "timestamp": "28s ago"
+    },
+    {
+      "id": 10,
+      "comment": "💯 Worth every penny spent",
+      "author": "Equipment Rental",
+      "location": "Lucknow",
+      "rating": 5,
+      "verified": true,
+      "vehicle": "Rental Fleet",
+      "timestamp": "32s ago"
+    }
+  ]
+}

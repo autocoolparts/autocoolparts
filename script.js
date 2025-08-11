@@ -60,6 +60,8 @@ class AutoCoolPartsApp {
         this.updateProgress();
         this.startAutoGallery();
         this.updateVideoShowcaseVisibility();
+        this.setupTestimonials();
+        this.testimonialsEnabled = true; // Start with testimonials enabled
 
         // Set up automatic music prompt after 2.5 seconds
         this.setupAutomaticMusicPrompt();
@@ -219,6 +221,12 @@ class AutoCoolPartsApp {
         const musicControlBtn = document.getElementById('musicControlBtn');
         if (musicControlBtn) {
             musicControlBtn.addEventListener('click', () => this.toggleMusic());
+        }
+
+        // Testimonial toggle
+        const testimonialToggleBtn = document.getElementById('testimonialToggleBtn');
+        if (testimonialToggleBtn) {
+            testimonialToggleBtn.addEventListener('click', () => this.toggleTestimonials());
         }
 
         // Intersection Observer for video autoplay
@@ -1119,6 +1127,147 @@ class AutoCoolPartsApp {
                 slide: this.currentSlide,
                 ...data
             });
+        }
+    }
+
+    // Testimonial System
+    async setupTestimonials() {
+        try {
+            const response = await fetch('testimonials.json');
+            const data = await response.json();
+            this.testimonials = data.testimonials;
+            this.startTestimonialStream();
+        } catch (error) {
+            console.error('Failed to load testimonials:', error);
+            // Fallback to hardcoded testimonials if JSON fails
+            this.testimonials = this.getFallbackTestimonials();
+            this.startTestimonialStream();
+        }
+    }
+
+    getFallbackTestimonials() {
+        return [
+            {
+                id: 1,
+                comment: "🔥 Amazing cooling performance!",
+                author: "Truck Owner",
+                location: "Mumbai",
+                rating: 5,
+                verified: true,
+                vehicle: "Heavy Truck",
+                timestamp: "2s ago"
+            },
+            {
+                id: 2,
+                comment: "⚡ Quick professional installation",
+                author: "Fleet Manager",
+                location: "Delhi",
+                rating: 5,
+                verified: true,
+                vehicle: "Commercial Fleet",
+                timestamp: "5s ago"
+            },
+            {
+                id: 3,
+                comment: "💯 Best investment for our drivers",
+                author: "Transport Co.",
+                location: "Pune",
+                rating: 5,
+                verified: true,
+                vehicle: "Multiple Vehicles",
+                timestamp: "8s ago"
+            }
+        ];
+    }
+
+    startTestimonialStream() {
+        if (!this.testimonialsEnabled) return;
+
+        const overlay = document.getElementById('testimonialOverlay');
+        if (!overlay) return;
+
+        // Clear existing comments
+        overlay.innerHTML = '';
+
+        // Create and display comment bubbles
+        this.testimonials.forEach((testimonial, index) => {
+            setTimeout(() => {
+                if (this.testimonialsEnabled) {
+                    this.createCommentBubble(testimonial, overlay);
+                }
+            }, index * 2000); // Show new comment every 2 seconds
+        });
+
+        // Restart the stream after all comments are shown
+        setTimeout(() => {
+            if (this.testimonialsEnabled) {
+                this.startTestimonialStream();
+            }
+        }, this.testimonials.length * 2000 + 5000); // Wait 5 seconds after last comment before restarting
+    }
+
+    createCommentBubble(testimonial, overlay) {
+        if (!this.testimonialsEnabled) return;
+
+        const bubble = document.createElement('div');
+        bubble.className = 'comment-bubble';
+        bubble.style.top = this.getRandomTopPosition() + '%';
+
+        bubble.innerHTML = `
+            <div class="comment-header">
+                <div class="comment-author">
+                    ${testimonial.author}
+                    ${testimonial.verified ? '<span class="verified-badge">✓</span>' : ''}
+                </div>
+                <div class="comment-location">${testimonial.location}</div>
+            </div>
+            <div class="comment-text">${testimonial.comment}</div>
+            <div class="comment-footer">
+                <div class="comment-vehicle">${testimonial.vehicle}</div>
+                <div class="comment-rating">
+                    ${this.generateStars(testimonial.rating)}
+                </div>
+            </div>
+        `;
+
+        overlay.appendChild(bubble);
+
+        // Remove bubble after animation completes
+        setTimeout(() => {
+            if (bubble.parentNode && this.testimonialsEnabled) {
+                bubble.parentNode.removeChild(bubble);
+            }
+        }, 6000);
+    }
+
+    getRandomTopPosition() {
+        // Generate random top position between 20% and 80%
+        return Math.random() * 60 + 20;
+    }
+
+    generateStars(rating) {
+        let stars = '';
+        for (let i = 0; i < 5; i++) {
+            stars += `<i class="fas fa-star" style="color: ${i < rating ? 'var(--accent-gold)' : 'var(--text-muted)'}"></i>`;
+        }
+        return stars;
+    }
+
+    toggleTestimonials() {
+        this.testimonialsEnabled = !this.testimonialsEnabled;
+        const overlay = document.getElementById('testimonialOverlay');
+        const toggleBtn = document.getElementById('testimonialToggleBtn');
+
+        if (overlay && toggleBtn) {
+            if (this.testimonialsEnabled) {
+                overlay.classList.remove('disabled');
+                toggleBtn.classList.add('active');
+                this.startTestimonialStream();
+            } else {
+                overlay.classList.add('disabled');
+                toggleBtn.classList.remove('active');
+                overlay.innerHTML = ''; // Clear existing comments
+            }
         }
     }
 }
