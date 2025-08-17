@@ -2,43 +2,43 @@
   "testimonials": [
     {
       "id": 1,
-      "comment": "🔥 Amazing cooling performance!",
-      "author": "Truck Owner",
+      "comment": "🔥 Installed Electric AC 24V in my truck!",
+      "author": "Truck Driver",
       "location": "Mumbai",
       "rating": 5,
       "verified": true,
-      "vehicle": "Heavy Truck",
-      "timestamp": "2s ago"
+      "vehicle": "Eicher 1110",
+      "timestamp": "3 days ago"
     },
     {
       "id": 2,
-      "comment": "⚡ Quick professional installation",
-      "author": "Fleet Manager",
-      "location": "Delhi",
+      "comment": "⚡ 10+ Electric ACs installed",
+      "author": "First Indian Camper",
+      "location": "Noida",
       "rating": 5,
       "verified": true,
-      "vehicle": "Commercial Fleet",
-      "timestamp": "5s ago"
+      "vehicle": "Caravan",
+      "timestamp": "10 days ago"
     },
     {
       "id": 3,
-      "comment": "💯 Best investment for our drivers",
-      "author": "Transport Co.",
-      "location": "Pune",
+      "comment": "💯 Best investment for our vehicles",
+      "author": "Motor Home Adventures",
+      "location": "Gurgaon",
       "rating": 5,
       "verified": true,
       "vehicle": "Multiple Vehicles",
-      "timestamp": "8s ago"
+      "timestamp": "5 days ago"
     },
     {
       "id": 4,
       "comment": "✅ Works perfectly in extreme heat",
-      "author": "JCB Operator",
-      "location": "Chennai",
+      "author": "JCB Manufacturer",
+      "location": "Palampur",
       "rating": 5,
       "verified": true,
       "vehicle": "Construction Equipment",
-      "timestamp": "12s ago"
+      "timestamp": "1 day ago"
     },
     {
       "id": 5,
@@ -48,57 +48,57 @@
       "rating": 5,
       "verified": true,
       "vehicle": "Caravan",
-      "timestamp": "15s ago"
+      "timestamp": "1 month ago"
     },
     {
       "id": 6,
       "comment": "💪 Heavy duty build quality",
       "author": "Mining Co.",
-      "location": "Kolkata",
+      "location": "Tamil Nadu",
       "rating": 5,
       "verified": true,
       "vehicle": "Mining Equipment",
-      "timestamp": "18s ago"
+      "timestamp": "14 days ago"
     },
     {
       "id": 7,
       "comment": "🌟 Excellent customer service",
-      "author": "Individual Owner",
+      "author": "Truck Driver",
       "location": "Hyderabad",
       "rating": 5,
       "verified": true,
-      "vehicle": "Personal Truck",
-      "timestamp": "22s ago"
+      "vehicle": "Ashok Leyland 1214",
+      "timestamp": "22 days ago"
     },
     {
       "id": 8,
-      "comment": "⚡ Same day installation",
+      "comment": "⚡ Cooling is awesoma and quality is top-notch",
       "author": "Logistics Co.",
-      "location": "Ahmedabad",
-      "rating": 5,
-      "verified": true,
-      "vehicle": "Delivery Trucks",
-      "timestamp": "25s ago"
-    },
-    {
-      "id": 9,
-      "comment": "🔥 Keeps drivers comfortable",
-      "author": "Transport Owner",
       "location": "Jaipur",
       "rating": 5,
       "verified": true,
-      "vehicle": "Long Haul Trucks",
-      "timestamp": "28s ago"
+      "vehicle": "Delivery Trucks",
+      "timestamp": "3 months ago"
+    },
+    {
+      "id": 9,
+      "comment": "🔥 Keeps drivers happy and comfortable",
+      "author": "Transport Owner",
+      "location": "Dehradun",
+      "rating": 5,
+      "verified": true,
+      "vehicle": "Tata 1613",
+      "timestamp": "2 months ago"
     },
     {
       "id": 10,
-      "comment": "💯 Worth every penny spent",
-      "author": "Equipment Rental",
+      "comment": "💯 Worth every rupee",
+      "author": "Logistics Manager",
       "location": "Lucknow",
       "rating": 5,
       "verified": true,
-      "vehicle": "Rental Fleet",
-      "timestamp": "32s ago"
+      "vehicle": "AMW 2518",
+      "timestamp": "11 days ago"
     }
   ]
 }

@@ -1195,7 +1195,7 @@ class AutoCoolPartsApp {
                 if (this.testimonialsEnabled) {
                     this.createCommentBubble(testimonial, overlay);
                 }
-            }, index * 2000); // Show new comment every 2 seconds
+            }, index * 4000); // Show new comment every 2 seconds
         });
 
         // Restart the stream after all comments are shown
@@ -1203,7 +1203,7 @@ class AutoCoolPartsApp {
             if (this.testimonialsEnabled) {
                 this.startTestimonialStream();
             }
-        }, this.testimonials.length * 2000 + 5000); // Wait 5 seconds after last comment before restarting
+        }, this.testimonials.length * 4000 + 8000); // Wait 5 seconds after last comment before restarting 
     }
 
     createCommentBubble(testimonial, overlay) {
