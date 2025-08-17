@@ -2254,3 +2254,185 @@ body {
 .testimonial-overlay.disabled .comment-bubble {
     display: none;
 }
+
+/* FAQ Section Styles */
+.faq-section {
+    background: var(--bg-secondary);
+    padding: var(--space-16) var(--space-4);
+    margin-top: var(--space-8);
+}
+
+.faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.faq-title {
+    text-align: center;
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    margin-bottom: var(--space-12);
+    background: var(--gradient-cta);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: var(--space-6);
+}
+
+.faq-item {
+    background: var(--bg-tertiary);
+    padding: var(--space-6);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 212, 255, 0.1);
+    transition: all var(--transition-normal);
+}
+
+.faq-item:hover {
+    border-color: var(--accent-blue);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+.faq-question {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--accent-blue);
+    margin-bottom: var(--space-4);
+    line-height: 1.4;
+}
+
+.faq-answer {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: var(--font-size-base);
+}
+
+/* Trust Section Styles */
+.trust-section {
+    background: var(--bg-primary);
+    padding: var(--space-16) var(--space-4);
+    border-top: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+.trust-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.trust-title {
+    text-align: center;
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    margin-bottom: var(--space-12);
+    background: var(--gradient-cta);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-8);
+}
+
+.trust-item {
+    text-align: center;
+    padding: var(--space-8);
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 212, 255, 0.1);
+    transition: all var(--transition-normal);
+}
+
+.trust-item:hover {
+    border-color: var(--accent-teal);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-4px);
+}
+
+.trust-item i {
+    font-size: 3rem;
+    color: var(--accent-teal);
+    margin-bottom: var(--space-4);
+    display: block;
+}
+
+.trust-item h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-4);
+}
+
+.trust-item p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: var(--font-size-base);
+}
+
+/* Responsive Design for FAQ and Trust Sections */
+@media (max-width: 768px) {
+    .faq-section,
+    .trust-section {
+        padding: var(--space-8) var(--space-4);
+    }
+
+    .faq-title,
+    .trust-title {
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--space-8);
+    }
+
+    .faq-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .faq-item {
+        padding: var(--space-4);
+    }
+
+    .trust-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+
+    .trust-item {
+        padding: var(--space-6);
+    }
+
+    .trust-item i {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-section,
+    .trust-section {
+        padding: var(--space-6) var(--space-3);
+    }
+
+    .faq-title,
+    .trust-title {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--space-6);
+    }
+
+    .faq-item {
+        padding: var(--space-3);
+    }
+
+    .trust-item {
+        padding: var(--space-4);
+    }
+
+    .trust-item i {
+        font-size: 2rem;
+    }
+}
