@@ -1180,7 +1180,7 @@ class AutoCoolPartsApp {
         ];
     }
 
-    startTestimonialStream() {
+        startTestimonialStream() {
         if (!this.testimonialsEnabled) return;
 
         const overlay = document.getElementById('testimonialOverlay');
@@ -1189,13 +1189,17 @@ class AutoCoolPartsApp {
         // Clear existing comments
         overlay.innerHTML = '';
 
-        // Create and display comment bubbles
-        this.testimonials.forEach((testimonial, index) => {
+        // Show only 3-4 comments per cycle instead of all 10
+        const commentsToShow = 4;
+        const selectedTestimonials = this.getRandomTestimonials(commentsToShow);
+
+        // Create and display comment bubbles with longer intervals
+        selectedTestimonials.forEach((testimonial, index) => {
             setTimeout(() => {
                 if (this.testimonialsEnabled) {
                     this.createCommentBubble(testimonial, overlay);
                 }
-            }, index * 4000); // Show new comment every 2 seconds
+            }, index * 6000); // Show new comment every 6 seconds
         });
 
         // Restart the stream after all comments are shown
@@ -1203,7 +1207,12 @@ class AutoCoolPartsApp {
             if (this.testimonialsEnabled) {
                 this.startTestimonialStream();
             }
-        }, this.testimonials.length * 4000 + 8000); // Wait 5 seconds after last comment before restarting 
+        }, commentsToShow * 6000 + 10000); // Wait 10 seconds after last comment before restarting
+    }
+
+    getRandomTestimonials(count) {
+        const shuffled = [...this.testimonials].sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, count);
     }
 
     createCommentBubble(testimonial, overlay) {
@@ -1241,8 +1250,9 @@ class AutoCoolPartsApp {
     }
 
     getRandomTopPosition() {
-        // Generate random top position between 20% and 80%
-        return Math.random() * 60 + 20;
+        // Generate random top position between 30% and 70% (avoiding top and bottom extremes)
+        // This keeps testimonials more centered and over content areas
+        return Math.random() * 40 + 30;
     }
 
     generateStars(rating) {

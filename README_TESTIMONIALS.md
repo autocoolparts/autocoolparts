@@ -8,13 +8,15 @@ This implementation adds a TikTok-style floating comment overlay to your AcAutoP
 ### 🎯 **Floating Comment Bubbles**
 - Comments appear as floating bubbles with different animation directions
 - Each comment shows for 6 seconds before fading out
-- Comments are positioned randomly across the screen
+- Comments are positioned only over content areas (right side), not blocking videos
+- Smaller, less intrusive design for better user experience
 - Smooth animations with hover effects
 
 ### 🔄 **Continuous Stream**
-- Comments appear every 2 seconds
+- Only 4 comments shown per cycle (instead of all 10)
+- Comments appear every 6 seconds (instead of 2 seconds)
 - Stream automatically restarts after all comments are shown
-- 5-second pause between cycles for better user experience
+- 10-second pause between cycles for better user experience
 
 ### 🎨 **Visual Design**
 - Dark theme with neon blue accents matching your brand
@@ -91,9 +93,10 @@ Simply add more entries to `testimonials.json`:
 
 ### Changing Animation Timing
 Modify these values in `script.js`:
-- `index * 2000` - Time between comments (currently 2 seconds)
+- `index * 6000` - Time between comments (currently 6 seconds)
 - `6000` - How long each comment displays
-- `5000` - Pause between cycles
+- `10000` - Pause between cycles
+- `commentsToShow` - Number of comments per cycle (currently 4)
 
 ### Styling Adjustments
 Modify CSS variables in `styles.css`:
