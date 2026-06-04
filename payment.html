@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - AutoCoolParts</title>
+    <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="logo">❄️ AutoCoolParts</a>
+            <nav class="main-nav">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="payment.html" class="active">Checkout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Checkout Header -->
+    <section class="checkout-header">
+        <div class="container">
+            <h1>Secure Checkout</h1>
+            <p>Complete your order with confidence</p>
+        </div>
+    </section>
+
+    <!-- Main Checkout Content -->
+    <section id="checkout" class="checkout-section">
+        <div class="container">
+            <div class="checkout-grid">
+                <!-- Left: Order Summary -->
+                <div class="order-summary">
+                    <h2>Order Summary</h2>
+
+                    <div id="checkout-items"></div>
+
+                    <div class="summary-totals">
+                        <div class="total-row">
+                            <span>Subtotal:</span>
+                            <span>$<span id="subtotal">0.00</span></span>
+                        </div>
+                        <div class="total-row discount">
+                            <span>Shipping:</span>
+                            <span>$<span id="shipping">0.00</span></span>
+                        </div>
+                        <div class="total-row discount">
+                            <span>Tax (GST/HST):</span>
+                            <span>$<span id="tax">0.00</span></span>
+                        </div>
+                        <div class="total-row total">
+                            <span>Total:</span>
+                            <span>$<span id="grand-total">0.00</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Promo Code -->
+                    <div class="promo-code">
+                        <input type="text" id="promo-input" placeholder="Enter promo code">
+                        <button onclick="applyPromoCode()">Apply</button>
+                        <span id="promo-message"></span>
+                    </div>
+                </div>
+
+                <!-- Right: Checkout Form -->
+                <div class="checkout-form-container">
+                    <h2>Shipping & Payment Information</h2>
+
+                    <!-- Shipping Address -->
+                    <form id="shipping-form" onsubmit="return handleShipping(event)">
+                        <h3>📍 Shipping Address</h3>
+
+                        <div class="form-row">
+                            <input type="text" id="firstName" placeholder="First name" required>
+                            <input type="text" id="lastName" placeholder="Last name" required>
+                        </div>
+
+                        <input type="email" id="email" placeholder="Email address" required>
+                        <input type="tel" id="phone" placeholder="Phone number">
+
+                        <textarea id="address1" placeholder="Street address" rows="2" required></textarea>
+
+                        <div class="form-row">
+                            <input type="text" id="city" placeholder="City" required>
+                            <select id="province" required>
+                                <option value="">Select Province</option>
+                                <option value="AB">Alberta (AB)</option>
+                                <option value="BC">British Columbia (BC)</option>
+                                <option value="MB">Manitoba (MB)</option>
+                                <option value="NB">New Brunswick (NB)</option>
+                                <option value="NL">Newfoundland & Labrador (NL)</option>
+                                <option value="NS">Nova Scotia (NS)</option>
+                                <option value="ON">Ontario (ON)</option>
+                                <option value="PE">Prince Edward Island (PE)</option>
+                                <option value="QC">Quebec (QC)</option>
+                                <option value="SK">Saskatchewan (SK)</option>
+                                <option value="NT">Northwest Territories (NT)</option>
+                                <option value="NU">Nunavut (NU)</option>
+                                <option value="YT">Yukon (YT)</option>
+                            </select>
+                        </div>
+
+                        <input type="text" id="postalCode" placeholder="Postal code" required>
+
+                        <!-- Payment Method Selection -->
+                        <h3 class="payment-section-title">💳 Payment Method</h3>
+
+                        <div class="payment-methods">
+                            <label class="payment-option selected">
+                                <input type="radio" name="paymentMethod" value="card" checked onchange="updatePaymentUI()">
+                                <span>📱 Credit/Debit Card (Stripe)</span>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="paypal" onchange="updatePaymentUI()">
+                                <span>🅿️ PayPal</span>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="bank" onchange="updatePaymentUI()">
+                                <span>🏦 Interac e-Transfer</span>
+                            </label>
+                        </div>
+
+                        <!-- Card Payment Form -->
+                        <div id="card-payment-form" class="payment-form active">
+                            <h4>Credit/Debit Card Information</h4>
+
+                            <div class="form-row">
+                                <input type="text" id="cardNumber" placeholder="Card number (4242 4242 4242 4242 for testing)" maxlength="19">
+                            </div>
+
+                            <div class="form-row">
+                                <input type="text" id="expiry" placeholder="MM/YY" maxlength="5">
+                                <select id="cvv" required>
+                                    <option value="">CVV</option>
+                                    <option value="123">123 (for testing)</option>
+                                </select>
+                            </div>
+
+                            <input type="text" id="cardName" placeholder="Name on card">
+                        </div>
+
+                        <!-- PayPal Form -->
+                        <div id="paypal-payment-form" class="payment-form hidden">
+                            <p>Redirecting to PayPal secure checkout...</p>
+                            <button type="button" onclick="simulatePayPal()">Continue with PayPal</button>
+                        </div>
+
+                        <!-- Bank Transfer Form -->
+                        <div id="bank-payment-form" class="payment-form hidden">
+                            <h4>Interac e-Transfer Instructions</h4>
+                            <p>We'll send you a payment link via email once your order is confirmed.</p>
+                            <input type="email" id="transferEmail" placeholder="Email for transfer link" required>
+                        </div>
+
+                        <!-- Order Notes -->
+                        <textarea id="orderNotes" placeholder="Any special instructions or notes (optional)" rows="3"></textarea>
+
+                        <!-- Terms & Submit -->
+                        <label class="terms-checkbox">
+                            <input type="checkbox" id="terms" required>
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+
+                        <button type="submit" class="btn-primary full-width btn-large">
+                            Place Order - $<span id="checkout-total">0.00</span> CAD
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="container">
+            <h3>Shop with Confidence</h3>
+            <div class="badges-grid">
+                <div class="badge">🔒 SSL Encrypted Checkout</div>
+                <div class="badge">✅ Money-Back Guarantee</div>
+                <div class="badge">🚚 Fast Shipping Nationwide</div>
+                <div class="badge">📞 Canadian Support</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal hidden">
+        <div class="modal-content success-modal">
+            <div class="success-icon">✅</div>
+            <h2>Order Confirmed!</h2>
+            <p>Your order has been placed successfully.</p>
+
+            <div id="order-details"></div>
+
+            <p><strong>What's next?</strong></p>
+            <ul class="next-steps">
+                <li>We'll email you a confirmation with your order number</li>
+                <li>You'll receive shipping updates at your email address</li>
+                <li>Your AC unit will ship within 1-2 business days</li>
+            </ul>
+
+            <button onclick="location.reload()" class="btn-primary full-width">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- Stripe Elements (simulated) -->
+    <script src="https://js.stripe.com/v3/" async></script>
+
+    <script src="app.js"></script>
+</body>
+</html>
