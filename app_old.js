@@ -14,7 +14,7 @@ const categories = [
         id:      'van',
         name:    'Van & Camper',
         tagline: 'Heating & cooling for every season',
-        image:   'images/heaters/portable-upright-side-5kw.jpg'
+        image:   'images/product_heater_1.jpeg'
     },
     {
         id:      'rv',
@@ -60,11 +60,13 @@ const products = [
         rating:  4.8,
         reviews: 94,
         images:  [
-            'images/heaters/portable-upright-side-5kw.jpg',
-            'images/heaters/portable-upright-front.jpg',
-            'images/heaters/portable-upright-rear.jpg',
-            'images/heaters/portable-upright-top.jpg',
-            'images/heaters/portable-upright-kit.jpg'
+            'images/product_heater_1.jpeg',
+            'images/product_heater_2.jpeg',
+            'images/product_heater_3.jpeg',
+            'images/product_heater_4.jpeg',
+            'images/product_heater_5.jpeg',
+            'images/product_heater_6.jpeg',
+            'images/product_heater_7.jpeg'
         ],
         badge:   null
     },
@@ -500,7 +502,7 @@ function renderCheckoutItems() {
     if (!container) return;
 
     if (cart.length === 0) {
-        container.innerHTML = '<p style="padding-bottom:1rem;font-size:0.9rem;color:#64748B;">Your cart is empty. <a href="cooling.html" style="color:var(--blue);">Go back to shop</a>.</p>';
+        container.innerHTML = '<p style="padding-bottom:1rem;font-size:0.9rem;color:#64748B;">Your cart is empty. <a href="index.html" style="color:var(--blue);">Go back to shop</a>.</p>';
         updateCheckoutTotals();
         return;
     }
