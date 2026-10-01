@@ -74,7 +74,7 @@ p { margin: 0; }
   border-bottom: 1px solid var(--line);
 }
 .hdr-in { display: flex; align-items: center; gap: 24px; min-height: 68px; }
-.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 700 22px/1 var(--display); letter-spacing: 0.04em; text-transform: uppercase; }
+.brand { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; flex: none; text-decoration: none; font: 700 22px/1 var(--display); letter-spacing: 0.04em; text-transform: uppercase; }
 .brand b { color: var(--ember); font-weight: 700; }
 .brand img { width: 36px; height: auto; }
 .nav { display: flex; gap: 26px; margin-left: 8px; }
@@ -364,7 +364,27 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
 .hm-hero h1 { font-size: clamp(42px, 11.5vw, 96px); font-weight: 800; text-transform: uppercase; line-height: 0.92; }
 .hm-lede { margin-top: 14px; font-size: 18px; line-height: 1.45; color: #c9d7e3; max-width: 30em; }
 .hm-shot { grid-area: shot; position: relative; margin: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--line-2); box-shadow: 0 24px 60px rgba(0,0,0,0.45); }
-.hm-shot img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 72%; }
+.hm-shot { aspect-ratio: 1 / 1; background: var(--cab-2); }
+.hm-slide {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transform: scale(1.06); transition: opacity 0.9s ease, transform 4.5s ease-out;
+}
+.hm-slide.on { opacity: 1; transform: scale(1); }
+.hm-show-bar {
+  position: absolute; left: 10px; right: 10px; bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.hm-show-lbl {
+  padding: 8px 12px; border-radius: 8px; background: rgba(6,12,19,0.84); border: 1px solid var(--line-2);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  font: 700 16px/1 var(--display); text-transform: uppercase; letter-spacing: 0.06em; color: var(--frost);
+}
+.hm-show-lbl { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pos-top { object-position: center top; }
+.hm-dots { display: flex; gap: 2px; padding: 2px 4px; border-radius: 999px; background: rgba(6,12,19,0.7); }
+.hm-dots button { width: 28px; height: 28px; padding: 0; border: 0; background: none; cursor: pointer; display: grid; place-items: center; }
+.hm-dots button::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: rgba(234,242,248,0.45); transition: background .3s, width .3s; }
+.hm-dots button[aria-current="true"]::before { width: 18px; border-radius: 4px; background: var(--ember); }
+@media (prefers-reduced-motion: reduce) { .hm-slide { transform: none !important; } }
 .hm-temp {
   position: absolute; left: 12px; bottom: 12px; display: flex; align-items: center; gap: 12px;
   padding: 10px 14px; border-radius: 10px; background: rgba(6,12,19,0.86);
@@ -444,7 +464,7 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
   .hm-cta { max-width: 520px; }
   .hm-hero-in { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
   .hm-reply { text-align: left; align-self: start; }
-  .hm-shot img { aspect-ratio: 1 / 1.05; }
+  .hm-shot { aspect-ratio: 1 / 1.05; }
   .hm-sec { padding-block: 88px; }
   .hm-cards { grid-template-columns: repeat(4, 1fr); gap: 16px; }
   .hm-body { padding: 16px 16px 18px; }
@@ -505,7 +525,15 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
   .ladder li { grid-template-columns: 58px 1fr; gap: 10px; padding: 10px; font-size: 15px; }
 }
 @media (max-width: 400px) {
-  .brand span { display: none; }
+  .brand { font-size: 18px; gap: 7px; }
+  .brand img { width: 28px; }
+  .hdr-in { gap: 8px; }
+  .cool-link { padding: 8px 10px; gap: 6px; font-size: 13px; }
+  .cool-link .arr { display: none; }
+}
+@media (max-width: 340px) {
+  .brand { font-size: 16px; }
+  .cool-link svg:first-child { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

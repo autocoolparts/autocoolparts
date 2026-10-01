@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="images/heaters/portable-upright-side-8kw.jpg">
+<link rel="preload" as="image" href="images/heaters/bunk-boxed.jpg">
 <link rel="stylesheet" href="heating.css">
 <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
@@ -44,12 +44,14 @@
       <p class="hm-lede">Diesel heaters for Canadian trucks. Message us your truck and we'll reply with the right heater and price.</p>
     </div>
 
-    <figure class="hm-shot">
-      <img src="images/heaters/portable-upright-side-8kw.jpg" alt="Orange 8 kW portable diesel heater with twin 5 litre fuel gauges and carry handles" width="1000" height="1000" fetchpriority="high">
-      <figcaption class="hm-temp" aria-label="Outside minus 31 degrees, inside the bunk 21 degrees">
-        <span><small>Outside</small><b class="cold">−31°</b></span>
-        <i aria-hidden="true">→</i>
-        <span><small>In the bunk</small><b class="warm">21°</b></span>
+    <figure class="hm-shot" id="heroShow" aria-roledescription="carousel" aria-label="Our heaters">
+      <img class="hm-slide on pos-top" src="images/heaters/bunk-boxed.jpg" alt="AutoCoolParts bunk diesel heater in its box with 10 litre fuel tank and user manual" width="894" height="972" fetchpriority="high" data-label="Bunk heater">
+      <img class="hm-slide" src="images/heaters/coolant-kit.jpg" alt="Coolant heater install kit: heater, water pump, fuel pump, hoses, fittings and controller" width="909" height="1000" data-label="Coolant heater kit">
+      <img class="hm-slide" src="images/heaters/portable-upright-side-8kw.jpg" alt="Orange 8 kW portable diesel heater with twin 5 litre fuel gauges" width="1000" height="1000" data-label="Portable heater">
+      <img class="hm-slide" src="images/heaters/bunk-kit.jpg" alt="Complete bunk heater kit: heater, 10 litre tank, fuel pump, exhaust, silencer, ducting, controller, remote and fittings" width="919" height="1000" data-label="Bunk heater kit">
+      <figcaption class="hm-show-bar">
+        <span class="hm-show-lbl" id="heroLbl" aria-live="polite">Bunk heater</span>
+        <span class="hm-dots" role="group" aria-label="Choose photo"></span>
       </figcaption>
     </figure>
 
@@ -77,7 +79,7 @@
 
     <div class="hm-cards">
       <article class="hm-card">
-        <a href="more-info.html#bunk" class="hm-media"><div class="diagram mini" data-zone="bunk" role="img" aria-label="Truck diagram: bunk heater under the sleeper bunk"></div></a>
+        <a href="more-info.html#bunk" class="hm-media"><img class="pos-top" src="images/heaters/bunk-boxed.jpg" alt="AutoCoolParts bunk diesel heater in its box with 10 litre fuel tank" width="894" height="972" loading="lazy"></a>
         <div class="hm-body">
           <h3>Bunk heater</h3>
           <p>Engine-off heat for your sleeper.</p>
@@ -120,10 +122,10 @@
       <h2>Complete kits in the box.</h2>
     </header>
     <div class="hm-strip" tabindex="0" aria-label="Photos of heater kits, swipe to see more">
+      <figure><img src="images/heaters/bunk-kit.jpg" alt="Complete bunk heater kit with 10 litre tank, fuel pump, exhaust, silencer, ducting and controller" width="919" height="1000" loading="lazy"><figcaption>Bunk heater + full kit</figcaption></figure>
       <figure><img src="images/heaters/portable-upright-kit.jpg" alt="Upright portable heater with exhaust, silencer, duct, vents, clamps and wall adapter" width="1000" height="1000" loading="lazy"><figcaption>Upright portable + kit</figcaption></figure>
       <figure><img src="images/heaters/coolant-kit.jpg" alt="Coolant heater kit with water pump, fuel pump, hoses, fittings and controller" width="909" height="1000" loading="lazy"><figcaption>Coolant heater kit</figcaption></figure>
       <figure><img src="images/heaters/portable-compact-kit.jpg" alt="Compact portable heater with exhaust, silencer, duct, vents and wall adapter" width="1000" height="1000" loading="lazy"><figcaption>Compact portable + kit</figcaption></figure>
-      <figure><img src="images/heaters/portable-upright-side-5kw.jpg" alt="Portable heater side view with twin fuel gauges" width="1000" height="1000" loading="lazy"><figcaption>Twin fuel gauges</figcaption></figure>
     </div>
     <ul class="hm-proof">
       <li><b>Engine-off heat</b>Stop idling all night</li>

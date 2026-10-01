@@ -55,6 +55,38 @@
     if (!reduced) requestAnimationFrame(tick);
   }
 
+  /* ── Hero photo slideshow ── */
+  var show = $("#heroShow");
+  if (show) {
+    var slides = $$(".hm-slide", show), lbl = $("#heroLbl"), dotsBox = $(".hm-dots", show);
+    var cur = 0, timer = null, SLIDE_MS = 3500; // time each photo stays on screen
+    var dots = slides.map(function (s, i) {
+      var d = document.createElement("button");
+      d.type = "button";
+      d.setAttribute("aria-label", "Show photo " + (i + 1) + ": " + s.getAttribute("data-label"));
+      d.addEventListener("click", function () { go(i); start(); });
+      dotsBox.appendChild(d);
+      return d;
+    });
+    var go = function (i) {
+      cur = (i + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle("on", k === cur); });
+      dots.forEach(function (d, k) { d.setAttribute("aria-current", String(k === cur)); });
+      if (lbl) lbl.textContent = slides[cur].getAttribute("data-label");
+    };
+    var start = function () { clearInterval(timer); if (slides.length > 1) timer = setInterval(function () { go(cur + 1); }, SLIDE_MS); };
+    // Swipe left / right on phones
+    var x0 = null;
+    show.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    show.addEventListener("touchend", function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40) { go(cur + (dx < 0 ? 1 : -1)); start(); }
+    });
+    document.addEventListener("visibilitychange", function () { if (document.hidden) clearInterval(timer); else start(); });
+    go(0); start();
+  }
+
   /* ── Truck diagrams ── */
   var NS = "http://www.w3.org/2000/svg";
   var truckBase =
