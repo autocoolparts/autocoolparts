@@ -479,6 +479,18 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
   .hm-body h3 { font-size: 19px; }
 }
 
+/* Partners strip (home) */
+.hm-partner { padding-block: 44px; border-top: 1px solid var(--line); background: var(--cab); }
+.hm-partner-in { display: grid; gap: 22px; align-items: center; }
+.hm-partner h2 { font-size: clamp(30px, 7vw, 46px); font-weight: 700; text-transform: uppercase; }
+.hm-partner p:not(.eyebrow) { margin-top: 8px; color: var(--ice); font-size: 16px; }
+.hm-cities { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.hm-cities li { font: 500 14px/1 var(--mono); color: var(--frost); border: 1px solid var(--line-2); padding: 8px 12px; border-radius: 999px; }
+.hm-partner .btn { justify-self: start; }
+.hm-reply b { color: var(--frost); font-weight: 500; }
+.ftr-loc a { color: var(--ember-2); }
+@media (min-width: 761px) { .hm-partner-in { grid-template-columns: 1fr auto; gap: 40px; } }
+
 /* Responsive */
 @media (max-width: 1080px) {
   .nav { gap: 18px; }
