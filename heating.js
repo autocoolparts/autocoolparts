@@ -193,4 +193,67 @@
   var smsHref = function (body) { return "sms:" + PHONE + (body ? "?&body=" + encodeURIComponent(body) : ""); };
   $$("a.sms").forEach(function (a) { a.href = smsHref(a.getAttribute("data-body") || ""); });
   update();
+
+  /* ── WhatsApp links ── */
+  var WA = PHONE.replace(/\D/g, "");
+  var waHref = function (body) { return "https://wa.me/" + WA + (body ? "?text=" + encodeURIComponent(body) : ""); };
+
+  var ICON_WA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.5c0 3.5 2.5 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2.4-1.8-2.8-2.8l.8-1-1-2z" fill="currentColor"/></svg>';
+  var ICON_SMS = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
+  var GREETING = "Hi AutoCoolParts, I'm looking for a truck heater. My truck: ";
+
+  /* ── Sticky contact bar (phones) ── */
+  var bar = document.createElement("div");
+  bar.className = "cbar";
+  bar.setAttribute("role", "region");
+  bar.setAttribute("aria-label", "Contact us");
+  bar.innerHTML =
+    '<a class="btn btn-wa wa" data-body="' + GREETING + '" href="#">' + ICON_WA + "WhatsApp</a>" +
+    '<a class="btn btn-ghost sms" data-body="' + GREETING + '" href="#">' + ICON_SMS + "Text</a>";
+  document.body.appendChild(bar);
+  // On the home page, keep the bar hidden while the hero buttons are on screen
+  var heroCta = $(".hm-hero .hm-cta");
+  if (heroCta && "IntersectionObserver" in window) {
+    bar.classList.add("off");
+    new IntersectionObserver(function (en) {
+      bar.classList.toggle("off", en[0].isIntersecting);
+    }).observe(heroCta);
+  }
+
+  /* ── Contact nudge: slides up after a few seconds, once per visit ── */
+  var NUDGE_DELAY = 7000; // milliseconds (7 seconds)
+  var store = {
+    get: function (k) { try { return window.sessionStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { window.sessionStorage.setItem(k, v); } catch (e) {} }
+  };
+  var nudge = document.createElement("aside");
+  nudge.className = "nudge";
+  nudge.setAttribute("role", "dialog");
+  nudge.setAttribute("aria-labelledby", "nudgeTitle");
+  nudge.innerHTML =
+    '<button type="button" class="nudge-x" aria-label="Close">×</button>' +
+    '<h2 id="nudgeTitle">Need a heater?</h2>' +
+    "<p>Send us your truck model. We'll reply with the right heater and a price. It only takes a minute.</p>" +
+    '<div class="nudge-btns">' +
+      '<a class="btn btn-wa wa" data-body="' + GREETING + '" href="#">' + ICON_WA + "WhatsApp</a>" +
+      '<a class="btn btn-ghost sms" data-body="' + GREETING + '" href="#">' + ICON_SMS + "Text</a>" +
+    "</div>";
+  document.body.appendChild(nudge);
+
+  var hideNudge = function () { nudge.classList.remove("show"); store.set("acp_nudge", "1"); };
+  $(".nudge-x", nudge).addEventListener("click", hideNudge);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && nudge.classList.contains("show")) hideNudge(); });
+
+  // Set every WhatsApp / text link (including the ones just added)
+  $$("a.wa").forEach(function (a) { a.href = waHref(a.getAttribute("data-body") || ""); a.target = "_blank"; a.rel = "noopener"; });
+  $$("a.sms").forEach(function (a) { a.href = smsHref(a.getAttribute("data-body") || ""); });
+
+  // Anyone who already tapped a contact button doesn't need the nudge
+  $$("a.wa, a.sms").forEach(function (a) { a.addEventListener("click", function () { store.set("acp_nudge", "1"); nudge.classList.remove("show"); }); });
+
+  if (!store.get("acp_nudge")) {
+    setTimeout(function () {
+      if (!store.get("acp_nudge")) { nudge.classList.add("show"); store.set("acp_nudge", "1"); }
+    }, NUDGE_DELAY);
+  }
 })();
