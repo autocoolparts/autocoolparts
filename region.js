@@ -21,7 +21,7 @@
   // India first, Canada middle, USA last
   var REGIONS = [
     { id: "in", name: "India", url: "india.html", sub: "Electric AC · Heaters · AC parts" },
-    { id: "ca", name: "Canada", url: "index.html", sub: "Truck heaters &amp; cooling · Ontario" },
+    { id: "ca", name: "Canada", url: "index.html", sub: "Truck heaters &amp; cooling · Across Canada" },
     { id: "us", name: "USA", url: "usa.html", sub: "Electric AC · More coming soon" }
   ];
   var byId = {};
@@ -37,7 +37,7 @@
   dlg.innerHTML =
     '<div class="rg-in" tabindex="-1">' +
       '<div class="rg-logo"><img src="images/logo_transparent.png" alt="" width="40" height="42"><span>AutoCool<b>Parts</b></span></div>' +
-      '<p class="rg-tag">One brand · India · Canada · USA</p>' +
+      '<p class="rg-tag">A global brand</p>' +
       '<h2 id="rgTitle">Choose your country</h2>' +
       '<ul class="rg-list">' +
         REGIONS.map(function (r) {
