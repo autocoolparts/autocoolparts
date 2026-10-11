@@ -20,9 +20,9 @@
 
   // India first, Canada middle, USA last
   var REGIONS = [
-    { id: "in", name: "India", url: "india.html", sub: "AC Auto Parts · Electric AC" },
+    { id: "in", name: "India", url: "india.html", sub: "Electric AC · Heaters · AC parts" },
     { id: "ca", name: "Canada", url: "index.html", sub: "Truck heaters &amp; cooling · Ontario" },
-    { id: "us", name: "USA", url: "usa.html", sub: "Products coming soon" }
+    { id: "us", name: "USA", url: "usa.html", sub: "Electric AC · More coming soon" }
   ];
   var byId = {};
   REGIONS.forEach(function (r) { byId[r.id] = r; });
