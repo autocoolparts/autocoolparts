@@ -43,8 +43,8 @@
 .rg-note { margin-top: 16px; font-size: 13px; color: var(--ice-dim); }
 @media (min-width: 640px) {
   .rg-in { padding: 36px 32px 28px; }
-  .rg-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .rg-opt { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; padding: 22px 14px; gap: 12px; }
+  .rg-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .rg-opt { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; padding: 20px 10px; gap: 10px; }
   .rg-opt .rg-flag { width: 64px; height: 43px; }
   .rg-opt .arr { display: none; }
 }
@@ -183,3 +183,10 @@
   .ip-after .ip-btns { max-width: 320px; }
 }
 .us-dist-only { max-width: 520px; }
+
+/* Rating */
+.rating { margin-top: 10px; display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--ice); }
+.rating .stars { color: #ffc531; letter-spacing: 2px; font-size: 17px; }
+.rating b { color: var(--frost); font-weight: 600; }
+.price-ask { margin-top: 14px; font: 700 28px/1 var(--display); text-transform: uppercase; letter-spacing: 0.03em; color: var(--ember-2); }
+.in-cta-one { grid-template-columns: minmax(0, 1fr); max-width: 420px; }

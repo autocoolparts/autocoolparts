@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="region.css">
 <script>
 /* Send returning visitors straight to the country they picked last time (see region.js) */
-try { if (!/[?&]region=/.test(location.search)) { var r = localStorage.getItem("acp_region"); if (r === "in") location.replace("india.html"); else if (r === "us") location.replace("usa.html"); } } catch (e) {}
+try { if (!/[?&]region=/.test(location.search)) { var r = localStorage.getItem("acp_region"); if (r === "in") location.replace("india.html"); else if (r === "us") location.replace("usa.html"); else if (r === "au") location.replace("australia.html"); } } catch (e) {}
 </script>
 <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
