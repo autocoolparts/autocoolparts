@@ -1,5 +1,7 @@
 /* AutoCoolParts — country picker: USA · Canada · India · Australia
-   - First visit to the home page: asks the visitor to pick a country.
+   - First visit to the home page: guesses the country from the phone's
+     time zone and offers it in a small bar at the bottom (never blocks the page).
+     If it can't guess, the bar shows all four flags.
    - The choice is remembered on that device (localStorage), and the
      header button lets them change it any time.
    - Order is always USA, Canada, India, Australia. */
@@ -21,7 +23,7 @@
 
   // USA, Canada, India, then Australia
   var REGIONS = [
-    { id: "us", name: "USA", url: "usa.html", sub: "Electric AC · Truck heaters" },
+    { id: "us", name: "USA", inName: "the USA", url: "usa.html", sub: "Electric AC · Truck heaters" },
     { id: "ca", name: "Canada", url: "index.html", sub: "Truck heaters &amp; cooling · Across Canada" },
     { id: "in", name: "India", url: "india.html", sub: "Electric AC · Heaters · AC parts" },
     { id: "au", name: "Australia", url: "australia.html", sub: "Electric AC for trucks" }
@@ -47,7 +49,7 @@
             FLAGS[r.id] + "<span><strong>" + r.name + "</strong><small>" + r.sub + "</small></span>" + ARR + "</button></li>";
         }).join("") +
       "</ul>" +
-      '<p class="rg-note">You can change this any time from the top of the page.</p>' +
+      '<p class="rg-note">You can change this any time from the flag at the top of the page.</p>' +
     "</div>";
   document.body.appendChild(dlg);
 
@@ -61,16 +63,7 @@
   var close = function () { if (typeof dlg.close === "function" && dlg.open) dlg.close(); else dlg.removeAttribute("open"); };
 
   Array.prototype.forEach.call(dlg.querySelectorAll(".rg-opt"), function (b) {
-    b.addEventListener("click", function () {
-      var r = byId[b.getAttribute("data-region")];
-      store.set(r.id);
-      if (r.id === here) {
-        close();
-        if (/[?&]region=/.test(location.search) && window.history && history.replaceState) history.replaceState(null, "", location.pathname + location.hash);
-      } else {
-        location.href = r.url;
-      }
-    });
+    b.addEventListener("click", function () { go(b.getAttribute("data-region")); });
   });
   // Click on the dark backdrop closes it (stays on this page)
   dlg.addEventListener("click", function (e) { if (e.target === dlg) close(); });
@@ -83,7 +76,83 @@
     btn.addEventListener("click", function (e) { e.preventDefault(); open(); });
   });
 
-  /* ── When to show it automatically ── */
+  /* ── Guess the visitor's country from the phone's time zone ── */
+  var CA_TZ = /^America\/(Toronto|Montreal|Vancouver|Edmonton|Winnipeg|Regina|Swift_Current|Halifax|Glace_Bay|Moncton|Goose_Bay|St_Johns|Whitehorse|Dawson|Dawson_Creek|Fort_Nelson|Creston|Yellowknife|Inuvik|Cambridge_Bay|Iqaluit|Pangnirtung|Rankin_Inlet|Resolute|Atikokan|Thunder_Bay|Nipigon|Rainy_River|Blanc-Sablon|Coral_Harbour)$/;
+  var US_TZ = /^(America\/(New_York|Chicago|Denver|Los_Angeles|Phoenix|Anchorage|Juneau|Sitka|Nome|Yakutat|Metlakatla|Adak|Boise|Detroit|Menominee|Indiana\/.+|Kentucky\/.+|North_Dakota\/.+)|Pacific\/Honolulu|US\/.+)$/;
+  var guess = function () {
+    var tz = "";
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+    if (/^Asia\/(Kolkata|Calcutta)$/.test(tz)) return "in";
+    if (/^Australia\//.test(tz)) return "au";
+    if (CA_TZ.test(tz) || /^Canada\//.test(tz)) return "ca";
+    if (US_TZ.test(tz)) return "us";
+    return null;
+  };
+
+  /* ── Small bar at the bottom of the screen (doesn't block the page) ── */
+  var bar = null;
+  var hideBar = function () {
+    if (!bar) return;
+    bar.classList.remove("show");
+    document.body.classList.remove("rg-bar-on");
+    var b = bar; bar = null;
+    setTimeout(function () { if (b.parentNode) b.parentNode.removeChild(b); }, 300);
+  };
+  var go = function (id) {
+    var r = byId[id];
+    store.set(r.id);
+    if (r.id === here) {
+      close(); hideBar();
+      if (/[?&]region=/.test(location.search) && window.history && history.replaceState) history.replaceState(null, "", location.pathname + location.hash);
+    } else {
+      location.href = r.url;
+    }
+  };
+  var X = '<button type="button" class="rg-bar-x" aria-label="Close">×</button>';
+  var showBar = function (id) {
+    bar = document.createElement("aside");
+    bar.className = "rg-bar";
+    bar.setAttribute("role", "region");
+    bar.setAttribute("aria-label", "Choose your country");
+    if (id) {
+      var r = byId[id];
+      bar.innerHTML = X +
+        '<p class="rg-bar-msg">' + FLAGS[id] + "<span>Looks like you're in <b>" + (r.inName || r.name) + "</b>.</span></p>" +
+        '<div class="rg-bar-btns">' +
+          '<button type="button" class="btn btn-ember rg-bar-go" data-region="' + id + '">Go to ' + r.name + " site</button>" +
+          '<button type="button" class="btn btn-ghost rg-bar-change">Change</button>' +
+        "</div>";
+    } else {
+      bar.innerHTML = X +
+        '<p class="rg-bar-msg"><span>Choose your country</span></p>' +
+        '<div class="rg-bar-flags">' +
+          REGIONS.map(function (r) {
+            return '<button type="button" class="rg-bar-flag" data-region="' + r.id + '">' + FLAGS[r.id] + "<span>" + r.name + "</span></button>";
+          }).join("") +
+        "</div>";
+    }
+    document.body.appendChild(bar);
+    document.body.classList.add("rg-bar-on");
+    requestAnimationFrame(function () { requestAnimationFrame(function () { if (bar) bar.classList.add("show"); }); });
+
+    bar.querySelector(".rg-bar-x").addEventListener("click", function () {
+      store.set(here); // stay on this site and don't ask again
+      hideBar();
+    });
+    Array.prototype.forEach.call(bar.querySelectorAll("[data-region]"), function (b) {
+      b.addEventListener("click", function () { go(b.getAttribute("data-region")); });
+    });
+    var ch = bar.querySelector(".rg-bar-change");
+    if (ch) ch.addEventListener("click", function () { hideBar(); open(); });
+  };
+
+  /* ── When to show something automatically ── */
   var askParam = /[?&]region=pick/.test(location.search);
-  if (askParam || (here === "ca" && !store.get())) open();
+  if (askParam) {
+    open();
+  } else if (here === "ca" && !store.get()) {
+    var g = guess();
+    if (g === "ca") store.set("ca");      // already on the right site: show nothing
+    else showBar(g);                      // another country, or unknown: small bar at the bottom
+  }
 })();
