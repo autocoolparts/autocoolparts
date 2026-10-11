@@ -182,3 +182,4 @@
   .ip-after .ip-media img { min-height: 240px; }
   .ip-after .ip-btns { max-width: 320px; }
 }
+.us-dist-only { max-width: 520px; }

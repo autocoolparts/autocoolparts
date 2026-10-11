@@ -2,7 +2,7 @@
    - First visit to the home page: asks the visitor to pick a country.
    - The choice is remembered on that device (localStorage), and the
      header button lets them change it any time.
-   - Order is always India, Canada, USA. */
+   - Order is always USA, Canada, India. */
 (function () {
   "use strict";
 
@@ -18,11 +18,11 @@
     us: '<svg class="rg-flag" viewBox="0 0 36 24" aria-hidden="true"><rect width="36" height="24" fill="#fff"/><g fill="#B22234"><rect width="36" height="1.85"/><rect y="3.69" width="36" height="1.85"/><rect y="7.38" width="36" height="1.85"/><rect y="11.08" width="36" height="1.85"/><rect y="14.77" width="36" height="1.85"/><rect y="18.46" width="36" height="1.85"/><rect y="22.15" width="36" height="1.85"/></g><rect width="15" height="12.92" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.5" cy="2.2" r=".6"/><circle cx="6" cy="2.2" r=".6"/><circle cx="9.5" cy="2.2" r=".6"/><circle cx="13" cy="2.2" r=".6"/><circle cx="4.2" cy="4.8" r=".6"/><circle cx="7.7" cy="4.8" r=".6"/><circle cx="11.2" cy="4.8" r=".6"/><circle cx="2.5" cy="7.4" r=".6"/><circle cx="6" cy="7.4" r=".6"/><circle cx="9.5" cy="7.4" r=".6"/><circle cx="13" cy="7.4" r=".6"/><circle cx="4.2" cy="10" r=".6"/><circle cx="7.7" cy="10" r=".6"/><circle cx="11.2" cy="10" r=".6"/></g></svg>'
   };
 
-  // India first, Canada middle, USA last
+  // USA first, Canada middle, India last
   var REGIONS = [
-    { id: "in", name: "India", url: "india.html", sub: "Electric AC · Heaters · AC parts" },
+    { id: "us", name: "USA", url: "usa.html", sub: "Electric AC · Truck heaters" },
     { id: "ca", name: "Canada", url: "index.html", sub: "Truck heaters &amp; cooling · Across Canada" },
-    { id: "us", name: "USA", url: "usa.html", sub: "Electric AC · More coming soon" }
+    { id: "in", name: "India", url: "india.html", sub: "Electric AC · Heaters · AC parts" }
   ];
   var byId = {};
   REGIONS.forEach(function (r) { byId[r.id] = r; });
