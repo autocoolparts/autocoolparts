@@ -36,7 +36,7 @@
   dlg.setAttribute("aria-labelledby", "rgTitle");
   dlg.innerHTML =
     '<div class="rg-in" tabindex="-1">' +
-      '<div class="rg-logo"><img src="images/logo_transparent.png" alt="" width="40" height="42"><span>AutoCool<b>Parts</b></span></div>' +
+      '<div class="rg-logo"><img src="images/logo_transparent.png" alt="" width="40" height="42"><span>AutoCool<b>Parts</b><small class="tld">.com</small></span></div>' +
       '<p class="rg-tag">A global brand</p>' +
       '<h2 id="rgTitle">Choose your country</h2>' +
       '<ul class="rg-list">' +

@@ -1854,3 +1854,6 @@ textarea { resize: vertical; min-height: 80px; }
     .payment-methods { flex-direction: column; }
     .order-summary  { position: static; }
 }
+
+/* Wordmark: ".com" in a smaller, lighter secondary style */
+.tld { font-size: 0.62em; font-weight: 500; opacity: 0.7; letter-spacing: 0.01em; text-transform: lowercase; margin-left: 1px; }

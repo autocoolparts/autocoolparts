@@ -551,3 +551,6 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* Wordmark: ".com" in a smaller, lighter secondary style */
+.brand .tld, .rg-logo .tld { font: 500 0.56em/1 var(--body); letter-spacing: 0.02em; text-transform: lowercase; color: var(--ice); margin-left: 2px; }
