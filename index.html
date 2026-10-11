@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-CA">
+<html lang="en-CA" data-region="ca">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -11,6 +11,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/heaters/bunk-boxed.jpg">
 <link rel="stylesheet" href="heating.css">
+<link rel="stylesheet" href="region.css">
+<script>
+/* Send returning visitors straight to the country they picked last time (see region.js) */
+try { if (!/[?&]region=/.test(location.search)) { var r = localStorage.getItem("acp_region"); if (r === "in") location.replace("india.html"); else if (r === "us") location.replace("usa.html"); } } catch (e) {}
+</script>
 <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body class="home">
@@ -23,6 +28,7 @@
       <span>AutoCool<b>Parts</b></span>
     </a>
     <div class="hdr-actions">
+      <a href="index.html?region=pick" class="rg-switch" aria-label="Change country">Canada</a>
       <a href="cooling.html" class="cool-link" title="Go to electric AC and cooling options">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M4.2 6.5l15.6 11M4.2 17.5l15.6-11M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5M3 9.8l3.7 1.2L6 14.8M21 9.8l-3.7 1.2.7 3.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span>Cooling <span class="hide-sm">/ Electric AC</span></span>
@@ -187,5 +193,6 @@
 </footer>
 
 <script src="heating.js"></script>
+<script src="region.js"></script>
 </body>
 </html>
